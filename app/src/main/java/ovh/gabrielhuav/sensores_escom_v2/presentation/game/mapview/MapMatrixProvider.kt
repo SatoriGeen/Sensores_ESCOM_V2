@@ -23,7 +23,6 @@ class MapMatrixProvider {
         const val MAP_BUILDING2 = "escom_building2"
         const val MAP_BUILDING2_PISO1 = "escom_building2_piso1"
         const val MAP_BUILDING2_PISO2 = "escom_building2_piso2"
-        const val MAP_BUILDING4_F2 = "escom_building4_floor_2"
         const val MAP_SALON2001 = "escom_salon2001"
         const val MAP_SALON2002 = "escom_salon2002"
         const val MAP_SALON2003 = "escom_salon2003"
@@ -42,6 +41,29 @@ class MapMatrixProvider {
         const val MAP_SALON2204 = "escom_salon2204"
         const val MAP_SALON2205 = "escom_salon2205"
         const val MAP_SALON2206 = "escom_salon2206"
+
+        const val MAP_BUILDING4 = "escom_building4"
+        const val MAP_BUILDING4_PISO1 = "escom_building4_piso1"
+        const val MAP_BUILDING4_PISO2 = "escom_building4_piso2"
+        const val MAP_SALON4001 = "escom_salon4001"
+        const val MAP_SALON4002 = "escom_salon4002"
+        const val MAP_SALON4003 = "escom_salon4003"
+        const val MAP_SALON4004 = "escom_salon4004"
+        const val MAP_SALON4005 = "escom_salon4005"
+        const val MAP_SALON4006 = "escom_salon4006"
+        const val MAP_SALON4101 = "escom_salon4101"
+        const val MAP_SALON4102 = "escom_salon4102"
+        const val MAP_SALON4103 = "escom_salon4103"
+        const val MAP_SALON4104 = "escom_salon4104"
+        const val MAP_SALON4105 = "escom_salon4105"
+        const val MAP_SALON4106 = "escom_salon4106"
+        const val MAP_SALON4201 = "escom_salon4201"
+        const val MAP_SALON4202 = "escom_salon4202"
+        const val MAP_SALON4203 = "escom_salon4203"
+        const val MAP_SALON4204 = "escom_salon4204"
+        const val MAP_SALON4205 = "escom_salon4205"
+        const val MAP_SALON4206 = "escom_salon4206"
+
         const val MAP_SALON2009 = "escom_salon2009"
         const val MAP_SALON2010 = "escom_salon2010"
 
@@ -54,7 +76,6 @@ class MapMatrixProvider {
         const val MAP_EDIFICIO_IA_BAJO = "edificio_ia_bajo"
         const val MAP_EDIFICIO_IA_MEDIO = "edificio_ia_medio"
         const val MAP_EDIFICIO_IA_ALTO = "edificio_ia_alto"
-        const val MAP_SALON4102 = "escom_salon4102"
         const val MAP_CABLEBUS = "cablebus"
         const val MAP_SALIDAMETRO = "escom_salidametro"
         const val MAP_METRO_POLITECNICO = "metro_politecnico"
@@ -98,26 +119,26 @@ class MapMatrixProvider {
 
                 // Salones Edificio 2
                 //Planta Baja
-                lowerMap.contains("2001") || lowerMap.contains("salon2001") -> MAP_SALON2001
-                lowerMap.contains("2002") || lowerMap.contains("salon2002") -> MAP_SALON2002
-                lowerMap.contains("2003") || lowerMap.contains("salon2003") -> MAP_SALON2003
-                lowerMap.contains("2004") || lowerMap.contains("salon2004") -> MAP_SALON2004
-                lowerMap.contains("2005") || lowerMap.contains("salon2005") -> MAP_SALON2005
-                lowerMap.contains("2006") || lowerMap.contains("salon2006") -> MAP_SALON2006
+                lowerMap.contains("escom_salon2001") || lowerMap.contains("salon2001") -> MAP_SALON2001
+                lowerMap.contains("escom_salon2002") || lowerMap.contains("salon2002") -> MAP_SALON2002
+                lowerMap.contains("escom_salon2003") || lowerMap.contains("salon2003") -> MAP_SALON2003
+                lowerMap.contains("escom_salon2004") || lowerMap.contains("salon2004") -> MAP_SALON2004
+                lowerMap.contains("escom_salon2005") || lowerMap.contains("salon2005") -> MAP_SALON2005
+                lowerMap.contains("escom_salon2006") || lowerMap.contains("salon2006") -> MAP_SALON2006
                 //Primer Piso
-                lowerMap.contains("2101") || lowerMap.contains("salon2101") -> MAP_SALON2101
-                lowerMap.contains("2102") || lowerMap.contains("salon2102") -> MAP_SALON2102
-                lowerMap.contains("2103") || lowerMap.contains("salon2103") -> MAP_SALON2103
-                lowerMap.contains("2104") || lowerMap.contains("salon2104") -> MAP_SALON2104
-                lowerMap.contains("2105") || lowerMap.contains("salon2105") -> MAP_SALON2105
-                lowerMap.contains("2106") || lowerMap.contains("salon2106") -> MAP_SALON2106
+                lowerMap.contains("escom_salon2101") || lowerMap.contains("salon2101") -> MAP_SALON2101
+                lowerMap.contains("escom_salon2102") || lowerMap.contains("salon2102") -> MAP_SALON2102
+                lowerMap.contains("escom_salon2103") || lowerMap.contains("salon2103") -> MAP_SALON2103
+                lowerMap.contains("escom_salon2104") || lowerMap.contains("salon2104") -> MAP_SALON2104
+                lowerMap.contains("escom_salon2105") || lowerMap.contains("salon2105") -> MAP_SALON2105
+                lowerMap.contains("escom_salon2106") || lowerMap.contains("salon2106") -> MAP_SALON2106
                 //Segundo Piso
-                lowerMap.contains("2201") || lowerMap.contains("salon2201") -> MAP_SALON2201
-                lowerMap.contains("2202") || lowerMap.contains("salon2202") -> MAP_SALON2202
-                lowerMap.contains("2203") || lowerMap.contains("salon2203") -> MAP_SALON2203
-                lowerMap.contains("2204") || lowerMap.contains("salon2204") -> MAP_SALON2204
-                lowerMap.contains("2205") || lowerMap.contains("salon2205") -> MAP_SALON2205
-                lowerMap.contains("2206") || lowerMap.contains("salon2206") -> MAP_SALON2206
+                lowerMap.contains("escom_salon2201") || lowerMap.contains("salon2201") -> MAP_SALON2201
+                lowerMap.contains("escom_salon2202") || lowerMap.contains("salon2202") -> MAP_SALON2202
+                lowerMap.contains("escom_salon2203") || lowerMap.contains("salon2203") -> MAP_SALON2203
+                lowerMap.contains("escom_salon2204") || lowerMap.contains("salon2204") -> MAP_SALON2204
+                lowerMap.contains("escom_salon2205") || lowerMap.contains("salon2205") -> MAP_SALON2205
+                lowerMap.contains("escom_salon2206") || lowerMap.contains("salon2206") -> MAP_SALON2206
                 lowerMap.contains("2009") || lowerMap.contains("salon2009") -> MAP_SALON2009
                 lowerMap.contains("2010") || lowerMap.contains("salon2010") -> MAP_SALON2010
                 
@@ -260,33 +281,28 @@ class MapMatrixProvider {
                 MAP_BUILDING2 -> createBuilding2Matrix()
                 MAP_BUILDING2_PISO1 -> createBuilding2Piso1Matrix()
                 MAP_BUILDING2_PISO2 -> createBuilding2Piso2Matrix()
-                MAP_BUILDING4_F2 -> createBuilding2Matrix()
                 // Salones Edificio 2
                 //Planta Baja
-                MAP_SALON2001 -> createSalonMatrix()
-                MAP_SALON2002 -> createSalonMatrix()
-                MAP_SALON2003 -> createSalonMatrix()
-                MAP_SALON2004 -> createSalonMatrix()
-                MAP_SALON2005 -> createSalonMatrix()
-                MAP_SALON2006 -> createSalonMatrix()
+                MAP_SALON2001, MAP_SALON2002, MAP_SALON2003, MAP_SALON2004, MAP_SALON2005, MAP_SALON2006 -> createSalonMatrix()
                 //Primer Piso
-                MAP_SALON2101 -> createSalonMatrix()
-                MAP_SALON2102 -> createSalonMatrix()
-                MAP_SALON2103 -> createSalonMatrix()
-                MAP_SALON2104 -> createSalonMatrix()
-                MAP_SALON2105 -> createSalonMatrix()
-                MAP_SALON2106 -> createSalonMatrix()
+                MAP_SALON2101, MAP_SALON2102, MAP_SALON2103, MAP_SALON2104, MAP_SALON2105, MAP_SALON2106 -> createSalonMatrix()
                 //Segundo Piso
-                MAP_SALON2201 -> createSalonMatrix()
-                MAP_SALON2202 -> createSalonMatrix()
-                MAP_SALON2203 -> createSalonMatrix()
-                MAP_SALON2204 -> createSalonMatrix()
-                MAP_SALON2205 -> createSalonMatrix()
-                MAP_SALON2206 -> createSalonMatrix()
+                MAP_SALON2201, MAP_SALON2202, MAP_SALON2203, MAP_SALON2204, MAP_SALON2205, MAP_SALON2206 -> createSalonMatrix()
+
+                //Edificio 4
+                MAP_BUILDING4 -> createBuilding4Matrix()
+                MAP_BUILDING4_PISO1 -> createBuilding4Piso1Matrix()
+                MAP_BUILDING4_PISO2 -> createBuilding4Piso2Matrix()
+                // Salones Edificio 4
+                //Planta Baja
+                MAP_SALON4001, MAP_SALON4002, MAP_SALON4003, MAP_SALON4004, MAP_SALON4005, MAP_SALON4006 -> createSalonMatrix()
+                //Primer Piso
+                MAP_SALON4101, MAP_SALON4102, MAP_SALON4103, MAP_SALON4104, MAP_SALON4105, MAP_SALON4106 -> createSalonMatrix()
+                //Segundo Piso
+                MAP_SALON4201, MAP_SALON4202, MAP_SALON4203, MAP_SALON4204, MAP_SALON4205, MAP_SALON4206 -> createSalonMatrix()
+
                 MAP_SALON2009 -> createSalon2009Matrix()  // Nueva matriz para el salón 2009
                 MAP_SALON2010 -> createSalon2010Matrix()  // Nueva matriz para el salón 2010
-                
-
                 MAP_SALON1212 -> createSalon1212Matrix()
                 MAP_CAFETERIA -> createCafeESCOMMatrix()
                 MAP_ESTACIONAMIENTO -> createEstacionamientoMatrix()
@@ -1369,123 +1385,7 @@ class MapMatrixProvider {
          * |                                                                         |
          * +-------------------------------------------------------------------------+
          */
-        private fun createBuilding2Matrix(): Array<Array<Int>> {
-            // Empezar con una matriz donde todo es un camino (PATH)
-            val matrix = Array(MAP_HEIGHT) { Array(MAP_WIDTH) { PATH } }
-
-            // --- Coordenadas Clave ---
-            // Estas son las coordenadas de las paredes que me pediste no mover.
-            val topWallY = 14            // Posición Y del muro superior de los salones
-            val classroomDepth = 8       // Profundidad de los salones
-            val corridorWallY = topWallY + classroomDepth // Muro del pasillo (calculado automáticamente)
-            val corridorHeight = 9       // Altura del pasillo
-            val bottomWallY = corridorWallY + corridorHeight // Muro inferior del edificio
-            val leftWallX = 1            // Borde izquierdo
-            val rightWallX = MAP_WIDTH - 4 // Borde derecho
-
-            // --- 1. MUROS EXTERIORES Y DEL PASILLO ---
-            // Dibuja los 4 muros principales que forman la caja del edificio y el pasillo.
-            for (j in leftWallX..rightWallX) {
-                matrix[topWallY][j] = WALL       // Muro superior
-                matrix[corridorWallY][j] = WALL  // Muro del pasillo (con las puertas)
-                matrix[bottomWallY][j] = WALL    // Muro inferior
-            }
-            for (i in topWallY..bottomWallY) {
-                matrix[i][leftWallX] = WALL      // Muro izquierdo
-                matrix[i][rightWallX] = WALL     // Muro derecho
-            }
-
-            // --- 2. PAREDES VERTICALES ENTRE SALONES ---
-            // Dibuja las divisiones de cada salón.
-            val verticalWallPositions = listOf(6, 11, 15, 19, 23, 28, 33) // Coordenadas X de cada pared
-            for (wallX in verticalWallPositions) {
-                for (i in topWallY..corridorWallY) {
-                    matrix[i][wallX] = WALL
-                }
-            }
-
-            // --- 3. PUERTAS Y PUNTOS INTERACTIVOS (CORREGIDO) ---
-            // Abrimos huecos en la pared del pasillo y los marcamos como interactivos.
-            matrix[corridorWallY][2] = INTERACTIVE     // Puerta Salón 2001
-            matrix[corridorWallY][7] = INTERACTIVE     // Puerta Salón 2002
-            matrix[corridorWallY][12] = INTERACTIVE     // Puerta Salón 2002
-            matrix[corridorWallY][16] = INTERACTIVE    // Puerta Salón 2003
-
-            // Escaleras: Abrimos un hueco y ponemos un punto interactivo en el centro.
-            for(j in 16..18) { matrix[corridorWallY][j] = PATH }
-            matrix[corridorWallY - 1][17] = INTERACTIVE // Punto para subir
-
-            matrix[corridorWallY][20] = INTERACTIVE    // Puerta Salón 2004
-            matrix[corridorWallY][24] = INTERACTIVE    // Puerta Salón 2005
-            matrix[corridorWallY][29] = INTERACTIVE    // Puerta Salón 2006
-            matrix[corridorWallY][34] = INTERACTIVE    // Puerta Baños (WC)
-
-            // --- 4. PUNTO DE SALIDA ---
-            // Punto para volver al mapa principal.
-            matrix[corridorWallY + 2][leftWallX] = INTERACTIVE
-
-            Log.d("MapMatrix", "Matriz del Edificio 2 (Final) creada y alineada.")
-            return matrix
-        }
-
-        private fun createBuilding2Piso1Matrix(): Array<Array<Int>> {
-                // Empezar con una matriz donde todo es un camino (PATH)
-                val matrix = Array(MAP_HEIGHT) { Array(MAP_WIDTH) { PATH } }
-
-                // --- Coordenadas Clave ---
-                // Estas son las coordenadas de las paredes que me pediste no mover.
-                val topWallY = 14            // Posición Y del muro superior de los salones
-                val classroomDepth = 8       // Profundidad de los salones
-                val corridorWallY = topWallY + classroomDepth // Muro del pasillo (calculado automáticamente)
-                val corridorHeight = 9       // Altura del pasillo
-                val bottomWallY = corridorWallY + corridorHeight // Muro inferior del edificio
-                val leftWallX = 1            // Borde izquierdo
-                val rightWallX = MAP_WIDTH - 4 // Borde derecho
-
-                // --- 1. MUROS EXTERIORES Y DEL PASILLO ---
-                // Dibuja los 4 muros principales que forman la caja del edificio y el pasillo.
-                for (j in leftWallX..rightWallX) {
-                    matrix[topWallY][j] = WALL       // Muro superior
-                    matrix[corridorWallY][j] = WALL  // Muro del pasillo (con las puertas)
-                    matrix[bottomWallY][j] = WALL    // Muro inferior
-                }
-                for (i in topWallY..bottomWallY) {
-                    matrix[i][leftWallX] = WALL      // Muro izquierdo
-                    matrix[i][rightWallX] = WALL     // Muro derecho
-                }
-
-                // --- 2. PAREDES VERTICALES ENTRE SALONES ---
-                // Dibuja las divisiones de cada salón.
-                val verticalWallPositions = listOf(6, 11, 15, 19, 23, 28, 33) // Coordenadas X de cada pared
-                for (wallX in verticalWallPositions) {
-                    for (i in topWallY..corridorWallY) {
-                        matrix[i][wallX] = WALL
-                    }
-                }
-
-                // --- 3. PUERTAS Y PUNTOS INTERACTIVOS (CORREGIDO) ---
-                // Abrimos huecos en la pared del pasillo y los marcamos como interactivos.
-                matrix[corridorWallY][2] = INTERACTIVE     // Puerta Salón 2001
-                matrix[corridorWallY][7] = INTERACTIVE     // Puerta Salón 2002
-                matrix[corridorWallY][12] = INTERACTIVE     // Puerta Salón 2002
-                matrix[corridorWallY][16] = INTERACTIVE    // Puerta Salón 2003
-
-                // Escaleras: Abrimos un hueco y ponemos un punto interactivo en el centro.
-                for(j in 16..18) { matrix[corridorWallY][j] = PATH }
-                matrix[corridorWallY - 1][17] = INTERACTIVE // Punto para bajar
-                matrix[corridorWallY - 3][17] = INTERACTIVE // Punto para subir
-
-
-            matrix[corridorWallY][20] = INTERACTIVE    // Puerta Salón 2004
-                matrix[corridorWallY][24] = INTERACTIVE    // Puerta Salón 2005
-                matrix[corridorWallY][29] = INTERACTIVE    // Puerta Salón 2006
-                matrix[corridorWallY][34] = INTERACTIVE    // Puerta Baños (WC)
-
-                Log.d("MapMatrix", "Matriz del Edificio 2 (Final) creada y alineada.")
-                return matrix
-        }
-
-        private fun createSalon2009Matrix(): Array<Array<Int>> {
+         private fun createSalon2009Matrix(): Array<Array<Int>> {
             val matrix = Array(MAP_HEIGHT) { Array(MAP_WIDTH) { WALL } }
 
             // Dimensiones del aula
@@ -1538,6 +1438,117 @@ class MapMatrixProvider {
             return matrix
         }
 
+        private fun createBuilding2Matrix(): Array<Array<Int>> {
+            // Empezar con una matriz donde todo es un camino (PATH)
+            val matrix = Array(MAP_HEIGHT) { Array(MAP_WIDTH) { PATH } }
+
+            // --- Coordenadas Clave ---
+            // Estas son las coordenadas de las paredes que me pediste no mover.
+            val topWallY = 14            // Posición Y del muro superior de los salones
+            val classroomDepth = 8       // Profundidad de los salones
+            val corridorWallY = topWallY + classroomDepth // Muro del pasillo (calculado automáticamente)
+            val corridorHeight = 9       // Altura del pasillo
+            val bottomWallY = corridorWallY + corridorHeight // Muro inferior del edificio
+            val leftWallX = 1            // Borde izquierdo
+            val rightWallX = MAP_WIDTH - 4 // Borde derecho
+
+            // --- 1. MUROS EXTERIORES Y DEL PASILLO ---
+            // Dibuja los 4 muros principales que forman la caja del edificio y el pasillo.
+            for (j in leftWallX..rightWallX) {
+                matrix[topWallY][j] = WALL       // Muro superior
+                matrix[corridorWallY][j] = WALL  // Muro del pasillo (con las puertas)
+                matrix[bottomWallY][j] = WALL    // Muro inferior
+            }
+            for (i in topWallY..bottomWallY) {
+                matrix[i][leftWallX] = WALL      // Muro izquierdo
+                matrix[i][rightWallX] = WALL     // Muro derecho
+            }
+
+            // --- 2. PAREDES VERTICALES ENTRE SALONES ---
+            // Dibuja las divisiones de cada salón.
+            val verticalWallPositions = listOf(6, 11, 15, 19, 23, 28, 33) // Coordenadas X de cada pared
+            for (wallX in verticalWallPositions) {
+                for (i in topWallY..corridorWallY) {
+                    matrix[i][wallX] = WALL
+                }
+            }
+
+            // --- 3. PUERTAS Y PUNTOS INTERACTIVOS (CORREGIDO) ---
+            // Abrimos huecos en la pared del pasillo y los marcamos como interactivos.
+            matrix[corridorWallY][2] = INTERACTIVE     // Puerta Salón 2001
+            matrix[corridorWallY][7] = INTERACTIVE     // Puerta Salón 2002
+            matrix[corridorWallY][12] = INTERACTIVE    // Puerta Salón 2003
+            matrix[corridorWallY][20] = INTERACTIVE    // Puerta Salón 2004
+            matrix[corridorWallY][24] = INTERACTIVE    // Puerta Salón 2005
+            matrix[corridorWallY][29] = INTERACTIVE    // Puerta Salón 2006
+            matrix[corridorWallY][34] = INTERACTIVE    // Puerta Baños (WC)
+
+            // Escaleras: Abrimos un hueco y ponemos un punto interactivo en el centro.
+            for(j in 16..18) { matrix[corridorWallY][j] = PATH }
+            matrix[corridorWallY - 1][17] = INTERACTIVE // Punto para subir
+
+            // --- 4. PUNTO DE SALIDA ---
+            // Punto para volver al mapa principal.
+            matrix[corridorWallY + 2][leftWallX] = INTERACTIVE
+
+            Log.d("MapMatrix", "Matriz del Edificio 2 (Final) creada y alineada.")
+            return matrix
+        }
+
+        private fun createBuilding2Piso1Matrix(): Array<Array<Int>> {
+            // Empezar con una matriz donde todo es un camino (PATH)
+            val matrix = Array(MAP_HEIGHT) { Array(MAP_WIDTH) { PATH } }
+
+            // --- Coordenadas Clave ---
+            // Estas son las coordenadas de las paredes que me pediste no mover.
+            val topWallY = 14            // Posición Y del muro superior de los salones
+            val classroomDepth = 8       // Profundidad de los salones
+            val corridorWallY = topWallY + classroomDepth // Muro del pasillo (calculado automáticamente)
+            val corridorHeight = 9       // Altura del pasillo
+            val bottomWallY = corridorWallY + corridorHeight // Muro inferior del edificio
+            val leftWallX = 1            // Borde izquierdo
+            val rightWallX = MAP_WIDTH - 4 // Borde derecho
+
+            // --- 1. MUROS EXTERIORES Y DEL PASILLO ---
+            // Dibuja los 4 muros principales que forman la caja del edificio y el pasillo.
+            for (j in leftWallX..rightWallX) {
+                matrix[topWallY][j] = WALL       // Muro superior
+                matrix[corridorWallY][j] = WALL  // Muro del pasillo (con las puertas)
+                matrix[bottomWallY][j] = WALL    // Muro inferior
+            }
+            for (i in topWallY..bottomWallY) {
+                matrix[i][leftWallX] = WALL      // Muro izquierdo
+                matrix[i][rightWallX] = WALL     // Muro derecho
+            }
+
+            // --- 2. PAREDES VERTICALES ENTRE SALONES ---
+            // Dibuja las divisiones de cada salón.
+            val verticalWallPositions = listOf(6, 11, 15, 19, 23, 28, 33) // Coordenadas X de cada pared
+            for (wallX in verticalWallPositions) {
+                for (i in topWallY..corridorWallY) {
+                    matrix[i][wallX] = WALL
+                }
+            }
+
+            // --- 3. PUERTAS Y PUNTOS INTERACTIVOS (CORREGIDO) ---
+            // Abrimos huecos en la pared del pasillo y los marcamos como interactivos.
+            matrix[corridorWallY][2] = INTERACTIVE     // Puerta Salón 2101
+            matrix[corridorWallY][7] = INTERACTIVE    // Puerta Salón 2102
+            matrix[corridorWallY][12] = INTERACTIVE    // Puerta Salón 2103
+            matrix[corridorWallY][20] = INTERACTIVE    // Puerta Salón 2104
+            matrix[corridorWallY][24] = INTERACTIVE    // Puerta Salón 2105
+            matrix[corridorWallY][29] = INTERACTIVE    // Puerta Salón 2106
+            matrix[corridorWallY][34] = INTERACTIVE    // Puerta Baños (WC)
+
+            // Escaleras: Abrimos un hueco y ponemos un punto interactivo en el centro.
+            for(j in 16..18) { matrix[corridorWallY][j] = PATH }
+            matrix[corridorWallY - 4][17] = INTERACTIVE // Punto para bajar
+            matrix[corridorWallY - 6][17] = INTERACTIVE // Punto para subir
+
+            Log.d("MapMatrix", "Matriz del Edificio 2 (Final) creada y alineada.")
+            return matrix
+        }
+
         private fun createBuilding2Piso2Matrix(): Array<Array<Int>> {
             // Empezar con una matriz donde todo es un camino (PATH)
             val matrix = Array(MAP_HEIGHT) { Array(MAP_WIDTH) { PATH } }
@@ -1573,22 +1584,181 @@ class MapMatrixProvider {
                 }
             }
 
-
-            // --- 3. PUERTAS Y PUNTOS INTERACTIVOS (CORREGIDO) ---
             // Abrimos huecos en la pared del pasillo y los marcamos como interactivos.
-            matrix[corridorWallY][2] = INTERACTIVE     // Puerta Salón 2001
-            matrix[corridorWallY][7] = INTERACTIVE     // Puerta Salón 2002
-            matrix[corridorWallY][12] = INTERACTIVE     // Puerta Salón 2002
-            matrix[corridorWallY][16] = INTERACTIVE    // Puerta Salón 2003
+            matrix[corridorWallY][2] = INTERACTIVE     // Puerta Salón 2201
+            matrix[corridorWallY][7] = INTERACTIVE    // Puerta Salón 2202
+            matrix[corridorWallY][12] = INTERACTIVE    // Puerta Salón 2203
+            matrix[corridorWallY][20] = INTERACTIVE    // Puerta Salón 2204
+            matrix[corridorWallY][24] = INTERACTIVE    // Puerta Salón 2205
+            matrix[corridorWallY][29] = INTERACTIVE    // Puerta Salón 2206
+            matrix[corridorWallY][34] = INTERACTIVE    // Puerta Baños (WC)
 
             // Escaleras: Abrimos un hueco y ponemos un punto interactivo en el centro.
             for(j in 16..18) { matrix[corridorWallY][j] = PATH }
             matrix[corridorWallY - 1][17] = INTERACTIVE // Punto para bajar
 
+            Log.d("MapMatrix", "Matriz del Edificio 2 (Final) creada y alineada.")
+            return matrix
+        }
+
+        private fun createBuilding4Matrix(): Array<Array<Int>> {
+            // Empezar con una matriz donde todo es un camino (PATH)
+            val matrix = Array(MAP_HEIGHT) { Array(MAP_WIDTH) { PATH } }
+
+            // --- Coordenadas Clave ---
+            // Estas son las coordenadas de las paredes que me pediste no mover.
+            val topWallY = 14            // Posición Y del muro superior de los salones
+            val classroomDepth = 8       // Profundidad de los salones
+            val corridorWallY = topWallY + classroomDepth // Muro del pasillo (calculado automáticamente)
+            val corridorHeight = 9       // Altura del pasillo
+            val bottomWallY = corridorWallY + corridorHeight // Muro inferior del edificio
+            val leftWallX = 1            // Borde izquierdo
+            val rightWallX = MAP_WIDTH - 4 // Borde derecho
+
+            // --- 1. MUROS EXTERIORES Y DEL PASILLO ---
+            // Dibuja los 4 muros principales que forman la caja del edificio y el pasillo.
+            for (j in leftWallX..rightWallX) {
+                matrix[topWallY][j] = WALL       // Muro superior
+                matrix[corridorWallY][j] = WALL  // Muro del pasillo (con las puertas)
+                matrix[bottomWallY][j] = WALL    // Muro inferior
+            }
+            for (i in topWallY..bottomWallY) {
+                matrix[i][leftWallX] = WALL      // Muro izquierdo
+                matrix[i][rightWallX] = WALL     // Muro derecho
+            }
+
+            // --- 2. PAREDES VERTICALES ENTRE SALONES ---
+            // Dibuja las divisiones de cada salón.
+            val verticalWallPositions = listOf(6, 11, 15, 19, 23, 28, 33) // Coordenadas X de cada pared
+            for (wallX in verticalWallPositions) {
+                for (i in topWallY..corridorWallY) {
+                    matrix[i][wallX] = WALL
+                }
+            }
+
+            // --- 3. PUERTAS Y PUNTOS INTERACTIVOS (CORREGIDO) ---
+            // Abrimos huecos en la pared del pasillo y los marcamos como interactivos.
+            matrix[corridorWallY][2] = INTERACTIVE     // Puerta Salón 2001
+            matrix[corridorWallY][7] = INTERACTIVE     // Puerta Salón 2002
+            matrix[corridorWallY][12] = INTERACTIVE    // Puerta Salón 2003
             matrix[corridorWallY][20] = INTERACTIVE    // Puerta Salón 2004
             matrix[corridorWallY][24] = INTERACTIVE    // Puerta Salón 2005
             matrix[corridorWallY][29] = INTERACTIVE    // Puerta Salón 2006
             matrix[corridorWallY][34] = INTERACTIVE    // Puerta Baños (WC)
+
+            // Escaleras: Abrimos un hueco y ponemos un punto interactivo en el centro.
+            for(j in 16..18) { matrix[corridorWallY][j] = PATH }
+            matrix[corridorWallY - 1][17] = INTERACTIVE // Punto para subir
+
+            // --- 4. PUNTO DE SALIDA ---
+            // Punto para volver al mapa principal.
+            matrix[corridorWallY + 2][leftWallX] = INTERACTIVE
+
+            Log.d("MapMatrix", "Matriz del Edificio 2 (Final) creada y alineada.")
+            return matrix
+        }
+
+        private fun createBuilding4Piso1Matrix(): Array<Array<Int>> {
+            // Empezar con una matriz donde todo es un camino (PATH)
+            val matrix = Array(MAP_HEIGHT) { Array(MAP_WIDTH) { PATH } }
+
+            // --- Coordenadas Clave ---
+            // Estas son las coordenadas de las paredes que me pediste no mover.
+            val topWallY = 14            // Posición Y del muro superior de los salones
+            val classroomDepth = 8       // Profundidad de los salones
+            val corridorWallY = topWallY + classroomDepth // Muro del pasillo (calculado automáticamente)
+            val corridorHeight = 9       // Altura del pasillo
+            val bottomWallY = corridorWallY + corridorHeight // Muro inferior del edificio
+            val leftWallX = 1            // Borde izquierdo
+            val rightWallX = MAP_WIDTH - 4 // Borde derecho
+
+            // --- 1. MUROS EXTERIORES Y DEL PASILLO ---
+            // Dibuja los 4 muros principales que forman la caja del edificio y el pasillo.
+            for (j in leftWallX..rightWallX) {
+                matrix[topWallY][j] = WALL       // Muro superior
+                matrix[corridorWallY][j] = WALL  // Muro del pasillo (con las puertas)
+                matrix[bottomWallY][j] = WALL    // Muro inferior
+            }
+            for (i in topWallY..bottomWallY) {
+                matrix[i][leftWallX] = WALL      // Muro izquierdo
+                matrix[i][rightWallX] = WALL     // Muro derecho
+            }
+
+            // --- 2. PAREDES VERTICALES ENTRE SALONES ---
+            // Dibuja las divisiones de cada salón.
+            val verticalWallPositions = listOf(6, 11, 15, 19, 23, 28, 33) // Coordenadas X de cada pared
+            for (wallX in verticalWallPositions) {
+                for (i in topWallY..corridorWallY) {
+                    matrix[i][wallX] = WALL
+                }
+            }
+
+            // --- 3. PUERTAS Y PUNTOS INTERACTIVOS (CORREGIDO) ---
+            // Abrimos huecos en la pared del pasillo y los marcamos como interactivos.
+            matrix[corridorWallY][2] = INTERACTIVE     // Puerta Salón 2101
+            matrix[corridorWallY][7] = INTERACTIVE    // Puerta Salón 2102
+            matrix[corridorWallY][12] = INTERACTIVE    // Puerta Salón 2103
+            matrix[corridorWallY][20] = INTERACTIVE    // Puerta Salón 2104
+            matrix[corridorWallY][24] = INTERACTIVE    // Puerta Salón 2105
+            matrix[corridorWallY][29] = INTERACTIVE    // Puerta Salón 2106
+            matrix[corridorWallY][34] = INTERACTIVE    // Puerta Baños (WC)
+
+            // Escaleras: Abrimos un hueco y ponemos un punto interactivo en el centro.
+            for(j in 16..18) { matrix[corridorWallY][j] = PATH }
+            matrix[corridorWallY - 4][17] = INTERACTIVE // Punto para bajar
+            matrix[corridorWallY - 6][17] = INTERACTIVE // Punto para subir
+
+            Log.d("MapMatrix", "Matriz del Edificio 2 (Final) creada y alineada.")
+            return matrix
+        }
+
+        private fun createBuilding4Piso2Matrix(): Array<Array<Int>> {
+            // Empezar con una matriz donde todo es un camino (PATH)
+            val matrix = Array(MAP_HEIGHT) { Array(MAP_WIDTH) { PATH } }
+
+            // --- Coordenadas Clave ---
+            // Estas son las coordenadas de las paredes que me pediste no mover.
+            val topWallY = 14            // Posición Y del muro superior de los salones
+            val classroomDepth = 8       // Profundidad de los salones
+            val corridorWallY = topWallY + classroomDepth // Muro del pasillo (calculado automáticamente)
+            val corridorHeight = 9       // Altura del pasillo
+            val bottomWallY = corridorWallY + corridorHeight // Muro inferior del edificio
+            val leftWallX = 1            // Borde izquierdo
+            val rightWallX = MAP_WIDTH - 4 // Borde derecho
+
+            // --- 1. MUROS EXTERIORES Y DEL PASILLO ---
+            // Dibuja los 4 muros principales que forman la caja del edificio y el pasillo.
+            for (j in leftWallX..rightWallX) {
+                matrix[topWallY][j] = WALL       // Muro superior
+                matrix[corridorWallY][j] = WALL  // Muro del pasillo (con las puertas)
+                matrix[bottomWallY][j] = WALL    // Muro inferior
+            }
+            for (i in topWallY..bottomWallY) {
+                matrix[i][leftWallX] = WALL      // Muro izquierdo
+                matrix[i][rightWallX] = WALL     // Muro derecho
+            }
+
+            // --- 2. PAREDES VERTICALES ENTRE SALONES ---
+            // Dibuja las divisiones de cada salón.
+            val verticalWallPositions = listOf(6, 11, 15, 19, 23, 28, 33) // Coordenadas X de cada pared
+            for (wallX in verticalWallPositions) {
+                for (i in topWallY..corridorWallY) {
+                    matrix[i][wallX] = WALL
+                }
+            }
+
+            // Abrimos huecos en la pared del pasillo y los marcamos como interactivos.
+            matrix[corridorWallY][2] = INTERACTIVE     // Puerta Salón 2201
+            matrix[corridorWallY][7] = INTERACTIVE    // Puerta Salón 2202
+            matrix[corridorWallY][12] = INTERACTIVE    // Puerta Salón 2203
+            matrix[corridorWallY][20] = INTERACTIVE    // Puerta Salón 2204
+            matrix[corridorWallY][24] = INTERACTIVE    // Puerta Salón 2205
+            matrix[corridorWallY][29] = INTERACTIVE    // Puerta Salón 2206
+            matrix[corridorWallY][34] = INTERACTIVE    // Puerta Baños (WC)
+
+            // Escaleras: Abrimos un hueco y ponemos un punto interactivo en el centro.
+            for(j in 16..18) { matrix[corridorWallY][j] = PATH }
+            matrix[corridorWallY - 1][17] = INTERACTIVE // Punto para bajar
 
             Log.d("MapMatrix", "Matriz del Edificio 2 (Final) creada y alineada.")
             return matrix
@@ -3391,78 +3561,60 @@ class MapMatrixProvider {
             // Imprimimos para depuración
             Log.d("MapTransition", "Checking transition at $mapId: ($x, $y)")
 
-            // Para el edificio 2
+            // --- PLANTA BAJA (Corregido) ---
             if (mapId == MAP_BUILDING2) {
-                // Compara la posición actual del jugador (x, y) con las coordenadas interactivas.
+                // Estas coordenadas AHORA coinciden con createBuilding2Matrix
                 when (Pair(x, y)) {
-                    // --- Transiciones a Salones ---
                     Pair(2, 22) -> return MAP_SALON2001
-                    Pair(7, 22) -> return MAP_SALON2002
-                    Pair(12, 22) -> return MAP_SALON2003
-                    Pair(16, 22) -> return MAP_SALON2004
-                    Pair(20, 22) -> return MAP_SALON2005
-                    Pair(25, 22) -> return MAP_SALON2006
-                    // Pair(35, 22) -> return MAP_WC // Puedes activar esta línea si los baños son un mapa separado
+                    Pair(7, 22) -> return MAP_SALON2002 // Antes era 7
+                    Pair(12, 22) -> return MAP_SALON2003 // Antes era 12
+                    Pair(20, 22) -> return MAP_SALON2004 // Antes era 16 (Donde están las escaleras)
+                    Pair(24, 22) -> return MAP_SALON2005 // Antes era 20
+                    Pair(29, 22) -> return MAP_SALON2006 // Antes era 25
+                    Pair(34, 22) -> return "MAP_WC"      // Baños (si decides implementarlos)
 
-                    // --- Transición a otros pisos (Escaleras) ---
-                    Pair(17, 21) -> {
-                        Log.d("MapTransition", "Transition to Building 2, Floor 1 triggered!")
-                        return MAP_BUILDING2_PISO1
-                    }
-
-                    // --- Transición para salir del edificio ---
-                    Pair(1, 24) -> {
-                        Log.d("MapTransition", "Transition to Main Map triggered!")
-                        return MAP_MAIN
-                    }
+                    // Escaleras y Salida (Estas estaban bien, pero verificamos)
+                    Pair(17, 21) -> return MAP_BUILDING2_PISO1
+                    Pair(1, 24) -> return MAP_MAIN
                 }
             }
 
+            // --- PISO 1 (Corregido) ---
             if (mapId == MAP_BUILDING2_PISO1) {
-                // Compara la posición actual del jugador (x, y) con las coordenadas interactivas.
                 when (Pair(x, y)) {
-                    // --- Transiciones a Salones ---
                     Pair(2, 22) -> return MAP_SALON2101
-                    Pair(7, 22) -> return MAP_SALON2102
-                    Pair(12, 22) -> return MAP_SALON2103
-                    Pair(16, 22) -> return MAP_SALON2104
-                    Pair(20, 22) -> return MAP_SALON2105
-                    Pair(25, 22) -> return MAP_SALON2106
-                    // Pair(35, 22) -> return MAP_WC // Puedes activar esta línea si los baños son un mapa separado
+                    Pair(7, 22) -> return MAP_SALON2102 // Antes era 7
+                    Pair(12, 22) -> return MAP_SALON2103 // Antes era 12
+                    Pair(20, 22) -> return MAP_SALON2104 // Antes era 16 (Donde están las escaleras)
+                    Pair(24, 22) -> return MAP_SALON2105 // Antes era 20
+                    Pair(29, 22) -> return MAP_SALON2106 // Antes era 25
+                    Pair(
+                        34,
+                        22
+                    ) -> return "MAP_WC"      // Baños (si decides implementarlos)Pair(2, 22) -> return MAP_SALON2101
 
-                    // --- Transición a otros pisos (Escaleras) ---
-                    Pair(21, 17) -> {
-                        Log.d("MapTransition", "Transition to Building 2, Floor 1 triggered!")
-                        return MAP_BUILDING2
-                    }
-
-                    Pair(18, 17) -> {
-                        Log.d("MapTransition", "Transition to Building 2, Floor 1 triggered!")
-                        return MAP_BUILDING2_PISO2
-                    }
-               }
-            }
-
-            if (mapId == MAP_BUILDING2_PISO2) {
-                // Compara la posición actual del jugador (x, y) con las coordenadas interactivas.
-                when (Pair(x, y)) {
-                    // --- Transiciones a Salones ---
-                    Pair(2, 22) -> return MAP_SALON2201
-                    Pair(7, 22) -> return MAP_SALON2202
-                    Pair(12, 22) -> return MAP_SALON2203
-                    Pair(16, 22) -> return MAP_SALON2204
-                    Pair(20, 22) -> return MAP_SALON2205
-                    Pair(25, 22) -> return MAP_SALON2206
-                    // Pair(35, 22) -> return MAP_WC // Puedes activar esta línea si los baños son un mapa separado
-
-                    // --- Transición a otros pisos (Escaleras) ---
-                    Pair(21, 17) -> {
-                        Log.d("MapTransition", "Transition to Building 2, Floor 1 triggered!")
-                        return MAP_BUILDING2_PISO1
-                    }
+                    // Escaleras
+                    Pair(17, 16) -> return MAP_BUILDING2 // Bajar
+                    Pair(17, 18) -> return MAP_BUILDING2_PISO2 // Subir
                 }
             }
-            // Para el edificio 2
+
+            // --- PISO 2 (Corregido) ---
+            if (mapId == MAP_BUILDING2_PISO2) {
+                when (Pair(x, y)) {
+                    Pair(2, 22) -> return MAP_SALON2201
+                    Pair(7, 22) -> return MAP_SALON2202 // Corregido
+                    Pair(12, 22) -> return MAP_SALON2203 // Corregido
+                    Pair(20, 22) -> return MAP_SALON2204 // Corregido
+                    Pair(24, 22) -> return MAP_SALON2205 // Corregido
+                    Pair(29, 22) -> return MAP_SALON2206 // Corregido
+                    Pair(34, 22) -> return "MAP_WC"
+
+                    // Escaleras
+                    Pair(17, 21) -> return MAP_BUILDING2_PISO1 // Bajar
+                }
+            }
+
             // Transiciones desde cada salon al edificio
             if (mapId == MAP_SALON2001 && x == 0 && y == 6) {
                 return MAP_BUILDING2
@@ -3520,6 +3672,118 @@ class MapMatrixProvider {
             if (mapId == MAP_SALON2206 && x == 0 && y == 6) {
                 return MAP_BUILDING2
             }
+
+            //Edificio 4
+            if (mapId == MAP_BUILDING4) {
+                when (Pair(x, y)) {
+                    Pair(2, 22) -> return MAP_SALON4001
+                    Pair(7, 22) -> return MAP_SALON4002 // Antes era 7
+                    Pair(12, 22) -> return MAP_SALON4003 // Antes era 12
+                    Pair(20, 22) -> return MAP_SALON4004 // Antes era 16 (Donde están las escaleras)
+                    Pair(24, 22) -> return MAP_SALON4005 // Antes era 20
+                    Pair(29, 22) -> return MAP_SALON4006 // Antes era 25
+                    Pair(34, 22) -> return "MAP_WC"      // Baños (si decides implementarlos)
+
+                    // Escaleras y Salida (Estas estaban bien, pero verificamos)
+                    Pair(17, 21) -> return MAP_BUILDING4_PISO1
+                    Pair(1, 24) -> return MAP_MAIN
+                }
+            }
+
+            // --- PISO 1 (Corregido) ---
+            if (mapId == MAP_BUILDING4_PISO1) {
+                when (Pair(x, y)) {
+                    Pair(2, 22) -> return MAP_SALON4101
+                    Pair(7, 22) -> return MAP_SALON4102 // Antes era 7
+                    Pair(12, 22) -> return MAP_SALON4103 // Antes era 12
+                    Pair(20, 22) -> return MAP_SALON4104 // Antes era 16 (Donde están las escaleras)
+                    Pair(24, 22) -> return MAP_SALON4105 // Antes era 20
+                    Pair(29, 22) -> return MAP_SALON4106 // Antes era 25
+                    Pair(
+                        34,
+                        22
+                    ) -> return "MAP_WC"      // Baños (si decides implementarlos)Pair(2, 22) -> return MAP_SALON2101
+
+                    // Escaleras
+                    Pair(17, 16) -> return MAP_BUILDING4 // Bajar
+                    Pair(17, 18) -> return MAP_BUILDING4_PISO2 // Subir
+                }
+            }
+
+            // --- PISO 2 (Corregido) ---
+            if (mapId == MAP_BUILDING4_PISO2) {
+                when (Pair(x, y)) {
+                    Pair(2, 22) -> return MAP_SALON4201
+                    Pair(7, 22) -> return MAP_SALON4202 // Corregido
+                    Pair(12, 22) -> return MAP_SALON4203 // Corregido
+                    Pair(20, 22) -> return MAP_SALON4204 // Corregido
+                    Pair(24, 22) -> return MAP_SALON4205 // Corregido
+                    Pair(29, 22) -> return MAP_SALON4206 // Corregido
+                    Pair(34, 22) -> return "MAP_WC"
+
+                    // Escaleras
+                    Pair(17, 21) -> return MAP_BUILDING4_PISO1 // Bajar
+                }
+            }
+
+            // Transiciones desde cada salon al edificio
+            if (mapId == MAP_SALON4001 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4002 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4003 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON2004 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4005 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4006 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+
+            if (mapId == MAP_SALON4101 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4102 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4103 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4104 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4105 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4106 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+
+            if (mapId == MAP_SALON4201 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4202 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4203 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4204 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4205 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+            if (mapId == MAP_SALON4206 && x == 0 && y == 6) {
+                return MAP_BUILDING4
+            }
+
             if (mapId == MAP_SALON2009 && x == 0 && y == 6) {
                 return MAP_BUILDING2
             }
@@ -3541,9 +3805,6 @@ class MapMatrixProvider {
                 return MAP_CAFETERIA
             }
 
-            if (mapId == MAP_MAIN && x == 23 && y == 10) {
-                return MAP_BUILDING4_F2
-            }
 
             // Add this case for the main map to salon1212
             if (mapId == MAP_MAIN && x == 27 && y == 28) {
@@ -3679,7 +3940,6 @@ class MapMatrixProvider {
         fun getInitialPositionForMap(mapId: String): Pair<Int, Int> {
             return when (mapId) {
                 MAP_MAIN -> Pair(15, 15)  // Posición central en el mapa principal
-                MAP_BUILDING4_F2 -> Pair(20, 16)  // Centro del pasillo principal del edificio 4
                 MAP_BUILDING2 -> Pair(20, 16)
                 MAP_BUILDING2_PISO1 -> Pair(20, 16)
                 MAP_BUILDING2_PISO2 -> Pair(20, 16)
@@ -3701,6 +3961,28 @@ class MapMatrixProvider {
                 MAP_SALON2204 -> Pair(20, 20)
                 MAP_SALON2205 -> Pair(20, 20)
                 MAP_SALON2206 -> Pair(20, 20)
+
+                MAP_BUILDING4 -> Pair(20, 16)
+                MAP_BUILDING4_PISO1 -> Pair(20, 16)
+                MAP_BUILDING4_PISO2 -> Pair(20, 16)
+                MAP_SALON4001 -> Pair(20, 20)
+                MAP_SALON4002 -> Pair(20, 20)
+                MAP_SALON4003 -> Pair(20, 20)
+                MAP_SALON4004 -> Pair(20, 20)
+                MAP_SALON4005 -> Pair(20, 20)
+                MAP_SALON4006 -> Pair(20, 20)
+                MAP_SALON4101 -> Pair(20, 20)
+                MAP_SALON4102 -> Pair(20, 20)
+                MAP_SALON4103 -> Pair(20, 20)
+                MAP_SALON4104 -> Pair(20, 20)
+                MAP_SALON4105 -> Pair(20, 20)
+                MAP_SALON4106 -> Pair(20, 20)
+                MAP_SALON4201 -> Pair(20, 20)
+                MAP_SALON4202 -> Pair(20, 20)
+                MAP_SALON4203 -> Pair(20, 20)
+                MAP_SALON4204 -> Pair(20, 20)
+                MAP_SALON4205 -> Pair(20, 20)
+                MAP_SALON4206 -> Pair(20, 20)
 
                 MAP_SALON2009 -> Pair(20, 20)  // Posición central dentro del salón 2009
                 MAP_SALON2010 -> Pair(20, 20)

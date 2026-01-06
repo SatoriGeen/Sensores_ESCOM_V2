@@ -21,7 +21,7 @@ import ovh.gabrielhuav.sensores_escom_v2.presentation.common.managers.MovementMa
 import ovh.gabrielhuav.sensores_escom_v2.presentation.common.managers.ServerConnectionManager
 import ovh.gabrielhuav.sensores_escom_v2.presentation.game.mapview.MapMatrixProvider
 import ovh.gabrielhuav.sensores_escom_v2.presentation.game.mapview.MapView
-import ovh.gabrielhuav.sensores_escom_v2.presentation.locations.buildings.building4.BuildingNumber4
+import ovh.gabrielhuav.sensores_escom_v2.presentation.components.BuildingNumber4
 import ovh.gabrielhuav.sensores_escom_v2.presentation.locations.outdoor.Lindavista
 import ovh.gabrielhuav.sensores_escom_v2.presentation.locations.outdoor.Zacatenco
 

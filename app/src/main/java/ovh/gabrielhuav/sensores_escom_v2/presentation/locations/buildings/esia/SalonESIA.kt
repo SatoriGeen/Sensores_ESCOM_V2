@@ -20,7 +20,6 @@ import ovh.gabrielhuav.sensores_escom_v2.presentation.common.managers.MovementMa
 import ovh.gabrielhuav.sensores_escom_v2.presentation.common.managers.ServerConnectionManager
 import ovh.gabrielhuav.sensores_escom_v2.presentation.game.mapview.MapMatrixProvider
 import ovh.gabrielhuav.sensores_escom_v2.presentation.game.mapview.MapView
-import ovh.gabrielhuav.sensores_escom_v2.presentation.locations.buildings.esia.EdificioESIA
 
 class SalonESIA : AppCompatActivity(),
     BluetoothManager.BluetoothManagerCallback,
@@ -66,7 +65,7 @@ class SalonESIA : AppCompatActivity(),
         Log.d(TAG, "=== SalonESIA onCreate INICIADO ===")
 
         try {
-            setContentView(R.layout.activity_salon2009)
+            setContentView(R.layout.activity_salon2000)
 
             // Inicializar el mapView con la imagen del salón
             mapView = MapView(

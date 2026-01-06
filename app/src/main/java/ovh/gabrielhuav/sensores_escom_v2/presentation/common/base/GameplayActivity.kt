@@ -25,7 +25,7 @@ import ovh.gabrielhuav.sensores_escom_v2.presentation.common.managers.ServerConn
 import ovh.gabrielhuav.sensores_escom_v2.presentation.components.BuildingEdificioIA
 import ovh.gabrielhuav.sensores_escom_v2.presentation.components.BuildingNumber2
 import ovh.gabrielhuav.sensores_escom_v2.presentation.components.PalapasISC
-import ovh.gabrielhuav.sensores_escom_v2.presentation.locations.buildings.building4.BuildingNumber4
+import ovh.gabrielhuav.sensores_escom_v2.presentation.components.BuildingNumber4
 import ovh.gabrielhuav.sensores_escom_v2.presentation.locations.buildings.cafeteria.Cafeteria
 import ovh.gabrielhuav.sensores_escom_v2.presentation.locations.outdoor.EstacionamientoEscom
 import ovh.gabrielhuav.sensores_escom_v2.presentation.locations.outdoor.Zacatenco
@@ -567,7 +567,7 @@ class GameplayActivity : AppCompatActivity(),
                 canChangeMap = true
                 targetDestination = "salon1212"
                 runOnUiThread {
-                    Toast.makeText(this, "Presiona A para entrar al salón 1212", Toast.LENGTH_SHORT)
+                    Toast.makeText(this, "Presiona A para entrar al edificio 3", Toast.LENGTH_SHORT)
                         .show()
                 }
             }
@@ -576,7 +576,7 @@ class GameplayActivity : AppCompatActivity(),
                 canChangeMap = true
                 targetDestination = "escom_building4_floor_2"
                 runOnUiThread {
-                    Toast.makeText(this, "Presiona A para entrar al salón 1212", Toast.LENGTH_SHORT)
+                    Toast.makeText(this, "Presiona A para entrar al edificio 4", Toast.LENGTH_SHORT)
                         .show()
                 }
             }
