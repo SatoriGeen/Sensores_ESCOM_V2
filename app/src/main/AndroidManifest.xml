@@ -143,6 +143,14 @@
             android:configChanges="orientation|screenSize|keyboardHidden"/>
 
         <activity
+            android:name=".presentation.locations.outdoor.AndenesMetroPolitecnico"
+            android:theme="@style/Theme.Sensores_ESCOM_V2" />
+
+        <activity
+            android:name=".presentation.locations.outdoor.RedMetro"
+            android:theme="@style/Theme.Sensores_ESCOM_V2" />
+
+        <activity
             android:name=".presentation.locations.outdoor.ESIA"
             android:configChanges="orientation|screenSize|keyboardHidden"/>
 

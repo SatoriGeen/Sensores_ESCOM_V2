@@ -439,7 +439,7 @@ class RedMetro : AppCompatActivity(),
     }
     private fun salirMetroActivity(latitude: Double, longitude: Double) {
         try {
-            val intent = Intent(this, SalirMetro::class.java).apply {
+            val intent = Intent(this, SalidaMetro::class.java).apply {
                 putExtra("LATITUDE", latitude)
                 putExtra("LONGITUDE", longitude)
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK

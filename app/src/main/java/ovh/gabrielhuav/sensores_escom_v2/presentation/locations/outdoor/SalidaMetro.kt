@@ -729,9 +729,14 @@ class SalidaMetro : AppCompatActivity(),
 
     override fun onDestroy() {
         super.onDestroy()
-        // Make sure to remove callbacks to prevent memory leaks
+
+        // Asegurarse de remover los callbacks para evitar memory leaks (fugas de memoria)
         handler.removeCallbacks(carUpdateRunnable)
-        bluetoothManager.cleanup()
+
+        // Verificamos si bluetoothManager se inicializó antes de intentar limpiarlo
+        if (::bluetoothManager.isInitialized) {
+            bluetoothManager.cleanup()
+        }
     }
     companion object {
         private const val TAG = "SalidaMetro"
