@@ -1,56 +1,74 @@
 # Online Server - WebSocket & Attendance System
 
-This server handles WebSocket connections for real-time player tracking and includes an attendance system for managing class attendance.
+This server handles WebSocket connections for real-time player tracking in the multiplayer map, and includes a REST API with an attendance system for managing class attendance.
 
 ## Features
 
-- **WebSocket Server**: Real-time player position tracking
-- **Zombie Game**: Mini-game with zombie AI
-- **Attendance System**: Record and query student attendance with duplicate prevention
+- **WebSocket Server**: Real-time player position tracking, map synchronization, and disconnect handling.
+- **Zombie Game Logic**: Mini-game with zombie AI routing and collision detection matrices.
+- **Attendance System**: Record and query student attendance with built-in duplicate prevention.
 
 ## Prerequisites
 
+Before starting, make sure you have the following installed on your machine:
 - Node.js (v14 or higher)
-- Docker and Docker Compose
+- Docker and Docker Desktop (Must be open and running in the background)
 - npm or yarn
 
 ## Setup Instructions
 
 ### 1. Install Dependencies
+Open your terminal inside the `Online-Server` folder and run:
 
-```powershell
+```bash
 npm install
 ```
 
-### 2. Start the Database
+### 2. Environment Variables (.env)
+You must create a `.env` file in the root of the `Online-Server` folder.
 
-Start the PostgreSQL database using Docker Compose:
+Important note for Windows users: using `127.0.0.1` instead of `localhost` is highly recommended to avoid Prisma authentication errors (Error P1000).
 
-```powershell
+Create a file named exactly `.env` and paste the following inside (adjust the port if your local Postgres uses a different port):
+
+```text
+DATABASE_URL="postgresql://attendance_user:attendance_pass@127.0.0.1:5433/attendance_db?schema=public"
+PORT=3000
+```
+
+> Note: Port `5433` is used here based on your local Postgres configuration. Change it if your DB uses a different port.
+
+### 3. Start the Database
+Ensure Docker Desktop is open, then start the PostgreSQL database using Docker Compose:
+
+```bash
 docker-compose up -d
 ```
 
-This will start a PostgreSQL container on port 5432.
+### 4. Initialize Prisma Database
+Once the database is running, generate the Prisma Client and run the migrations to create all the necessary tables:
 
-### 3. Initialize Prisma
-
-Generate the Prisma Client and run migrations:
-
-```powershell
-# Generate Prisma Client
+```bash
 npx prisma generate
-
-# Create and run the initial migration
 npx prisma migrate dev --name init
 ```
 
-### 4. Start the Server
+### 5. Start the Server
 
-```powershell
+```bash
 node server.js
 ```
 
-The server will start on `http://localhost:3000`
+The server will start and listen on http://localhost:3000.
+
+## Connecting the Android App (Troubleshooting)
+
+If your game/app is not connecting to the server, verify the following in your Kotlin code (e.g., `ServerConnectionManager.kt`) and your network environment:
+
+- Android Emulator: Use `ws://10.0.2.2:3000` (this is the emulator's special alias for your PC's localhost).
+- Physical Android Device: Both your PC and phone must be on the exact same Wi‑Fi network. Use your PC's local IPv4 address (e.g., `ws://192.168.1.75:3000`).
+- Ensure your Windows Firewall is temporarily turned off for private networks, or create an inbound rule allowing TCP traffic on port `3000`.
+- Cleartext traffic: Ensure your Android app allows non-HTTPS connections. In `AndroidManifest.xml` include `android:usesCleartextTraffic="true"` inside the `<application>` tag and add the permission `<uses-permission android:name="android.permission.INTERNET" />`.
 
 ## Attendance API
 
@@ -59,199 +77,32 @@ The server will start on `http://localhost:3000`
 **Endpoint:** `POST /attendance`
 
 **Request Body:**
+
 ```json
 {
-  "phoneID": "unique-phone-identifier",
+  "phoneID": "unique-phone-identifier-string",
   "fullName": "John Doe",
-  "group": "3CM1"
+  "group": "Group A"
 }
 ```
 
-**Success Response (201):**
-```json
-{
-  "success": true,
-  "message": "Attendance registered successfully",
-  "data": {
-    "id": 1,
-    "phoneID": "unique-phone-identifier",
-    "attendanceTime": "2025-10-29T10:30:00.000Z",
-    "fullName": "John Doe",
-    "group": "3CM1"
-  }
-}
-```
-
-**Error Response - Already Attended (409):**
-```json
-{
-  "success": false,
-  "error": "Attendance already registered for this phoneID today"
-}
-```
-
-**Error Response - Missing Fields (400):**
-```json
-{
-  "success": false,
-  "error": "Missing required fields: phoneID, fullName, and group are required"
-}
-```
-
-### Get Attendance List
-
-**Endpoint:** `GET /attendance/:date/:group`
-
-**Parameters:**
-- `date`: Date in YYYY-MM-DD format (e.g., 2025-10-29)
-- `group`: Group name (e.g., 3CM1)
-
-**Example:**
-```
-GET /attendance/2025-10-29/3CM1
-```
-
-**Success Response (200):**
-```json
-{
-  "success": true,
-  "date": "2025-10-29",
-  "group": "3CM1",
-  "count": 2,
-  "attendees": [
-    {
-      "phoneID": "phone-001",
-      "attendanceTime": "2025-10-29T10:30:00.000Z",
-      "fullName": "John Doe",
-      "group": "3CM1"
-    },
-    {
-      "phoneID": "phone-002",
-      "attendanceTime": "2025-10-29T10:35:00.000Z",
-      "fullName": "Jane Smith",
-      "group": "3CM1"
-    }
-  ]
-}
-```
-
-## Testing the Attendance API
-
-### Using PowerShell
-
-**Register Attendance:**
-```powershell
-$body = @{
-    phoneID = "test-phone-001"
-    fullName = "John Doe"
-    group = "3CM1"
-} | ConvertTo-Json
-
-Invoke-RestMethod -Uri "http://localhost:3000/attendance" -Method POST -Body $body -ContentType "application/json"
-```
-
-**Get Attendance List:**
-```powershell
-Invoke-RestMethod -Uri "http://localhost:3000/attendance/2025-10-29/3CM1" -Method GET
-```
-
-### Using cURL (Git Bash or WSL)
-
-**Register Attendance:**
-```bash
-curl -X POST http://localhost:3000/attendance \
-  -H "Content-Type: application/json" \
-  -d '{"phoneID":"test-phone-001","fullName":"John Doe","group":"3CM1"}'
-```
-
-**Get Attendance List:**
-```bash
-curl http://localhost:3000/attendance/2025-10-29/3CM1
-```
-
-## Database Management
-
-### View Database with Prisma Studio
-
-```powershell
-npx prisma studio
-```
-
-This opens a web interface at `http://localhost:5555` to view and edit database records.
-
-### Reset Database
-
-```powershell
-npx prisma migrate reset
-```
-
-### Stop Database
-
-```powershell
-docker-compose down
-```
-
-To also remove the stored data:
-```powershell
-docker-compose down -v
-```
-
-## Attendance Business Rules
-
-1. **Duplicate Prevention**: A user with the same `phoneID` cannot register attendance twice on the same day
-2. **Automatic Timestamp**: The `attendanceTime` is automatically set to the current date and time
-3. **Group Filtering**: Attendance can be queried by date and group
-
-## Environment Variables
-
-The `.env` file contains:
-```
-DATABASE_URL="postgresql://attendance_user:attendance_pass@localhost:5432/attendance_db"
-PORT=3000
-```
+Notes:
+1. **Duplicate Prevention:** A student (identified by `phoneID`) can only be registered once per class (group + date).
+2. **Timestamp:** The `attendanceTime` is automatically set to the current date and time on the server.
+3. **Group Filtering:** Attendance can be queried by date and group inside the database.
 
 ## Project Structure
 
 ```
 Online-Server/
 ├── prisma/
-│   └── schema.prisma          # Database schema
-├── server.js                  # Main server file
-├── zombieController.js        # Zombie game logic
-├── collisionMatrices.js       # Collision detection
-├── docker-compose.yml         # Database container config
-├── package.json               # Dependencies
-├── .env                       # Environment variables
-└── README.md                  # This file
+│   ├── schema.prisma          # Database schema and models
+│   └── migrations/            # Auto-generated DB migration history
+├── server.js                  # Main Express & WebSocket server file
+├── zombieController.js        # Zombie enemy game logic
+├── collisionMatrices.js       # Collision detection for map matrices
+├── docker-compose.yml         # Database container configuration
+├── package.json               # Node.js Dependencies
+├── .env                       # Environment variables (You create this)
+└── README.md
 ```
-
-## Troubleshooting
-
-### Database Connection Issues
-
-If you see connection errors:
-1. Ensure Docker is running
-2. Check if the database container is up: `docker ps`
-3. Verify the connection string in `.env` matches your Docker setup
-
-### Port Already in Use
-
-If port 3000 or 5432 is already in use:
-- Change the server port in `.env`
-- Change the database port mapping in `docker-compose.yml`
-
-### Prisma Client Not Found
-
-Run:
-```powershell
-npx prisma generate
-```
-
-## WebSocket Features (Existing)
-
-The server also includes WebSocket functionality for:
-- Player position tracking
-- Zombie mini-game
-- Multi-map support
-
-See the original documentation for WebSocket usage.
