@@ -87,6 +87,8 @@
             android:name=".presentation.locations.outdoor.Esime"
             android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity
+            android:name=".presentation.locations.outdoor.esime.buildings.MinijuegoEnergiaActivity" />
+        <activity
             android:name=".presentation.locations.outdoor.locations.esime.buildings.Edificio3Activity"
             android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity

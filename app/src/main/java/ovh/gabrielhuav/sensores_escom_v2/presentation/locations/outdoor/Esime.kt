@@ -507,9 +507,14 @@ class Esime : AppCompatActivity(), OnlineServerManager.WebSocketListener, MapVie
     }
 
     private fun enterBuilding3() {
-        // TODO: Implementar navegación al Edificio 3 cuando esté disponible
-        Toast.makeText(this, "Acceso al Edificio 3 - En desarrollo", Toast.LENGTH_LONG).show()
-        Log.d("Esime", "Intento de acceso al Edificio 3 desde posición: $playerPosition")
+        Log.d("Esime", "Entrando al mapa interior del Edificio 3")
+
+        // Aquí llamamos al archivo de la interfaz interior que ya tienes en el proyecto
+        val intent = Intent(this, ovh.gabrielhuav.sensores_escom_v2.presentation.locations.outdoor.locations.esime.buildings.Edificio3Activity::class.java).apply {
+            putExtra("PLAYER_NAME", playerName)
+            putExtra("IS_SERVER", isServer)
+        }
+        startActivity(intent)
     }
 
     private fun showBuildingNotAvailable(buildingNumber: Int) {
