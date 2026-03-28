@@ -3,6 +3,7 @@ package ovh.gabrielhuav.sensores_escom_v2.presentation.locations.outdoor.locatio
 
 
 import android.content.Intent
+import android.graphics.Canvas
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
@@ -41,6 +42,25 @@ class Edificio3Activity : AppCompatActivity(), OnlineServerManager.WebSocketList
     private var isServer: Boolean = false
     private var canExitBuilding = false
 
+    // 🏗️ SISTEMA DE PISOS MÚLTIPLES
+    private var currentFloor: Int = 0 // 0 = Planta baja, 1 = Piso 1, 2 = Piso 2, 3 = Piso 3
+    private val maxFloors = 3 // Máximo piso (0-3)
+    
+    // Mapas de recursos para cada piso
+    private val floorMaps = mapOf(
+        0 to R.drawable.mapa_edificio3_esime,     // Planta baja
+        1 to R.drawable.mapa_edificio3_esime_1,   // Piso 1
+        2 to R.drawable.mapa_edificio3_esime_2,   // Piso 2
+        3 to R.drawable.mapa_edificio3_esime_3    // Piso 3
+    )
+
+    // Posiciones de las escaleras/elevador (donde se puede subir/bajar)
+    // 📍 Ubicación: X=34, Y=21
+    private val stairsPositions = listOf(
+        Pair(34, 21)  // Posición exacta de las escaleras
+    )
+    private val stairsCenterPosition = Pair(34, 21)
+
     // 🟢 POSICIÓN INICIAL SEGURA EN EL PASILLO
     private var playerPosition: Pair<Int, Int> = Pair(3, 19)
 
@@ -60,14 +80,17 @@ class Edificio3Activity : AppCompatActivity(), OnlineServerManager.WebSocketList
             isServer = intent.getBooleanExtra("IS_SERVER", false)
 
             mapView.post {
-                mapView.setCurrentMap("edificio3", R.drawable.mapa_edificio3_esime)
+                // Inicializar con el mapa de la planta baja
+                updateFloorMap(currentFloor)
                 mapView.playerManager.apply {
-                    setCurrentMap("edificio3")
+                    setCurrentMap("edificio3_piso_$currentFloor")
                     localPlayerId = playerName
                     updateLocalPlayerPosition(playerPosition)
                 }
                 initializeManagers()
                 setupButtonListeners()
+                setupStairsVisual()  // 📍 Agregar visual de escaleras
+                updateFloorDisplay()
             }
         } catch (e: Exception) {
             Log.e("Edificio3", "Error: ${e.message}")
@@ -144,6 +167,11 @@ class Edificio3Activity : AppCompatActivity(), OnlineServerManager.WebSocketList
     private fun getRoomName(position: Pair<Int, Int>): String {
         val (x, y) = position
 
+        // 🟢 DETECTAR SI ESTAMOS EN LAS ESCALERAS
+        if (isAtStairs(position)) {
+            return "Escaleras"
+        }
+
         // 1. ZONAS DE PASILLO
         if (y in 19..21) return "Pasillo Principal"
         if (y == 18 || y == 22) return "En la Puerta"
@@ -174,11 +202,61 @@ class Edificio3Activity : AppCompatActivity(), OnlineServerManager.WebSocketList
         return "Desconocido (X=$x, Y=$y)"
     }
 
+    // 🟢 VERIFICAR SI ESTAMOS EN LAS ESCALERAS
+    private fun isAtStairs(position: Pair<Int, Int>): Boolean {
+        return stairsPositions.contains(position)
+    }
+
     // 🟢 VALIDACIÓN DE COLISIONES ACTIVA
     private fun isValidPosition(position: Pair<Int, Int>): Boolean {
         val (x, y) = position
         if (x < 0 || x >= 40 || y < 0 || y >= 40) return false
-        return !collisionMap[x][y]
+        
+        // Validar colisiones estáticas del mapa
+        if (collisionMap[x][y]) return false
+
+        // 🏗️ VALIDACIONES DINÁMICAS POR PISO
+        // En pisos superiores (1, 2, 3), ajustes de colisiones específicas
+        if (currentFloor != 0) {
+            // Bloquear salida derecha: x >= 36 cuando y = 18, 19, 20
+            if (x >= 36 && y in 18..21) {
+                return false
+            }
+            
+            // Bloquear salida izquierda: x <= 6 cuando y = 18, 19, 20
+            if (x <= 6 && y in 17..30) {
+                return false
+            }
+            
+            // 🚪 PERMITIR PUERTAS QUE AHORA SON ENTRADAS (Excepciones)
+            // Estas posiciones NO deben tener colisión en pisos superiores
+            val entrancesAllowed = listOf(
+                Pair(31, 18),  // Baños/derecha
+                Pair(21, 18),  // Aula 3/entrada
+                Pair(10, 18),  // Aula 2/entrada
+                Pair(12, 18),  // Aula 2/entrada
+                Pair(19, 21),  // Aula 3/pasillo
+                Pair(13, 21)   // Aula 2/pasillo
+            )
+            if (entrancesAllowed.contains(position)) {
+                return true  // Permitir pasar
+            }
+            
+            // 🚫 BLOQUEAR POSICIONES QUE NO DEBEN TENER PASO
+            val blockedPositions = listOf(
+                Pair(9, 20),   // Quitar colisión indebida
+                Pair(20, 18),  // Nueva colisión (Aula 3/4)
+                Pair(15, 18),  // Nueva colisión (entre aulas)
+                Pair(14, 18),  // Nueva colisión (Aula 3/entrada)
+                Pair(18, 22),  // Nueva colisión (pasillo inferior)
+                Pair(17, 22)   // Nueva colisión (Aula 8)
+            )
+            if (blockedPositions.contains(position)) {
+                return false  // Bloquear estas posiciones
+            }
+        }
+        
+        return true
     }
 
     private fun initializeManagers() {
@@ -214,6 +292,10 @@ class Edificio3Activity : AppCompatActivity(), OnlineServerManager.WebSocketList
                 val room = getRoomName(playerPosition)
 
                 when (room) {
+                    "Escaleras" -> {
+                        // 🟢 LÓGICA DE ESCALERAS - Permitir subir y bajar
+                        showStairsMenu()
+                    }
                     "Aula 2" -> {
                         if (energiaRestaurada) {
                             Toast.makeText(this, "⚡ La energía ya está funcionando perfectamente.", Toast.LENGTH_SHORT).show()
@@ -272,8 +354,13 @@ class Edificio3Activity : AppCompatActivity(), OnlineServerManager.WebSocketList
     }
 
     private fun checkPositionForExit(position: Pair<Int, Int>) {
-        // Habilitar salida en los extremos del pasillo
-        canExitBuilding = (position.first <= 4 || position.first >= 36) && position.second in 19..21
+        // Solo permitir salida del edificio en PLANTA BAJA (currentFloor == 0)
+        canExitBuilding = if (currentFloor == 0) {
+            (position.first <= 4 || position.first >= 36) && position.second in 19..21
+        } else {
+            false  // No se puede salir en pisos superiores
+        }
+        
         if (canExitBuilding) {
             runOnUiThread {
                 Toast.makeText(this, "Presiona A para salir del edificio", Toast.LENGTH_SHORT).show()
@@ -302,6 +389,145 @@ class Edificio3Activity : AppCompatActivity(), OnlineServerManager.WebSocketList
         btnBack = findViewById(R.id.btnBack)
         btnBack.text = "Volver a ESIME"
     }
+    // 📍 CONFIGURAR VISUAL DE ESCALERAS EN EL MAPA
+    private fun setupStairsVisual() {
+        mapView.setCustomDrawCallback(object : MapView.CustomDrawCallback {
+            override fun onCustomDraw(canvas: android.graphics.Canvas, cellWidth: Float, cellHeight: Float) {
+                // Dibujar recuadro y punto indicador en las escaleras
+                val paint = android.graphics.Paint().apply {
+                    style = android.graphics.Paint.Style.STROKE
+                    strokeWidth = 3f
+                    color = android.graphics.Color.GREEN // Color verde para indicar interacción
+                    isAntiAlias = true
+                }
+
+                val (stairsX, stairsY) = stairsCenterPosition
+                val x = stairsX * cellWidth
+                val y = stairsY * cellHeight
+
+                // Dibujar recuadro alrededor de la celda
+                canvas.drawRect(
+                    x,
+                    y,
+                    x + cellWidth,
+                    y + cellHeight,
+                    paint
+                )
+
+                // Dibujar círculo puntero adicional en el centro
+                val circleRadius = cellWidth / 4
+                val circlePaint = android.graphics.Paint().apply {
+                    style = android.graphics.Paint.Style.FILL
+                    color = android.graphics.Color.GREEN
+                    isAntiAlias = true
+                }
+                canvas.drawCircle(
+                    x + cellWidth / 2,
+                    y + cellHeight / 2,
+                    circleRadius,
+                    circlePaint
+                )
+
+                // Dibujar símbolo de escaleras (dos líneas diagonales)
+                val linePaint = android.graphics.Paint().apply {
+                    style = android.graphics.Paint.Style.STROKE
+                    strokeWidth = 2f
+                    color = android.graphics.Color.GREEN
+                    isAntiAlias = true
+                }
+                val padding = cellWidth / 4
+                // Primera línea diagonal
+                canvas.drawLine(
+                    x + padding,
+                    y + cellHeight - padding,
+                    x + cellWidth - padding,
+                    y + padding,
+                    linePaint
+                )
+                // Segunda línea diagonal paralela
+                canvas.drawLine(
+                    x + padding * 1.5f,
+                    y + cellHeight - padding,
+                    x + cellWidth - padding * 0.5f,
+                    y + padding,
+                    linePaint
+                )
+            }
+        })
+    }
+    // 🟢 MOSTRAR MENÚ DE ESCALERAS PARA ELEGIR A QUÉ PISO IR
+    private fun showStairsMenu() {
+        val options = mutableListOf<String>()
+
+        // Opción para bajar
+        if (currentFloor > 0) {
+            options.add("Bajar a Piso ${currentFloor - 1}")
+        }
+
+        // Opción para subir
+        if (currentFloor < maxFloors) {
+            options.add("Subir a Piso ${currentFloor + 1}")
+        }
+
+        if (options.isEmpty()) {
+            Toast.makeText(this, "⛔ No puedes ir a otro piso desde aquí.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val optionsArray = options.toTypedArray()
+        var selectedIndex = 0
+
+        // Usa Android AlertDialog para seleccionar piso
+        android.app.AlertDialog.Builder(this)
+            .setTitle("📍 Pisos disponibles (Piso Actual: $currentFloor)")
+            .setSingleChoiceItems(optionsArray, 0) { _, which ->
+                selectedIndex = which
+            }
+            .setPositiveButton("Ir") { _, _ ->
+                val selectedOption = optionsArray[selectedIndex]
+                val targetFloor = if (selectedOption.contains("Bajar")) {
+                    currentFloor - 1
+                } else {
+                    currentFloor + 1
+                }
+                changeFloor(targetFloor)
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
+    }
+
+    // 🟢 CAMBIAR DE PISO
+    private fun changeFloor(newFloor: Int) {
+        if (newFloor < 0 || newFloor > maxFloors) {
+            Toast.makeText(this, "❌ Piso inválido.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        currentFloor = newFloor
+        updateFloorMap(currentFloor)
+        updateFloorDisplay()
+
+        Toast.makeText(this, "📍 Ahora estás en el Piso $currentFloor", Toast.LENGTH_SHORT).show()
+        Log.d("Edificio3", "✅ Cambio a piso $currentFloor")
+    }
+
+    // 🟢 ACTUALIZAR EL MAPA VISUAL DEL PISO
+    private fun updateFloorMap(floor: Int) {
+        val mapResourceId = floorMaps[floor] ?: R.drawable.mapa_edificio3_esime
+        mapView.setCurrentMap("edificio3_piso_$floor", mapResourceId)
+        mapView.playerManager.setCurrentMap("edificio3_piso_$floor")
+        mapView.invalidate()
+    }
+
+    // 🟢 ACTUALIZAR LA VISUALIZACIÓN DEL PISO ACTUAL
+    private fun updateFloorDisplay() {
+        val floorName = when (currentFloor) {
+            0 -> "Planta Baja"
+            else -> "Piso $currentFloor"
+        }
+        Log.d("Edificio3", "🏗️ Piso actual: $floorName")
+        // Aquí puedes agregar un TextView en el layout para mostrar el piso si lo deseas
+    }
 
     override fun onMessageReceived(message: String) {
         runOnUiThread {
@@ -318,8 +544,23 @@ class Edificio3Activity : AppCompatActivity(), OnlineServerManager.WebSocketList
         }
     }
 
-    override fun onResume() { super.onResume(); if (::movementManager.isInitialized) movementManager.setPosition(playerPosition) }
-    override fun onPause() { super.onPause(); if (::movementManager.isInitialized) movementManager.stopMovement() }
-    override fun onDestroy() { super.onDestroy(); if (::mapView.isInitialized) mapView.playerManager.cleanup() }
-    override fun onMapTransitionRequested(targetMap: String, pos: Pair<Int, Int>) { if (targetMap == MapMatrixProvider.MAP_ESIME) returnToEsime() }
+    override fun onResume() {
+        super.onResume()
+        if (::movementManager.isInitialized) movementManager.setPosition(playerPosition)
+        updateFloorDisplay()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (::movementManager.isInitialized) movementManager.stopMovement()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (::mapView.isInitialized) mapView.playerManager.cleanup()
+    }
+
+    override fun onMapTransitionRequested(targetMap: String, pos: Pair<Int, Int>) {
+        if (targetMap == MapMatrixProvider.MAP_ESIME) returnToEsime()
+    }
 }
